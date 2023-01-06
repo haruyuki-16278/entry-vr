@@ -1,0 +1,35 @@
+<script type="module">
+import * as eg from "https://js.sabae.cc/egvr.js";
+
+function randomColor() {
+  return eg.rgb(Math.floor(Math.random()*255),
+                Math.floor(Math.random()*255),
+                Math.floor(Math.random()*255));
+}
+
+/*
+for (let i = 0; i < 2*2*Math.PI; i += Math.PI / 6) {
+  eg.sphere(Math.cos(i), Math.sin(i) + 1.5, -i, 0.3, randomColor());
+  eg.sphere(-Math.cos(i), -Math.sin(i) + 1.5, -i, 0.3, randomColor());
+}
+*/
+
+let i = 0;
+let duration = 0.01;
+function randomColorBall() {
+  console.log('called');
+  eg.sphere(Math.cos(i), Math.sin(i) + 1.5, -30+i, 0.3, randomColor());
+  eg.sphere(Math.sin(i), -Math.cos(i) + 1.5, -30+i, 0.3, randomColor());
+  eg.sphere(-Math.cos(i), -Math.sin(i) + 1.5, -30+i, 0.3, randomColor());
+  eg.sphere(-Math.sin(i), Math.cos(i) + 1.5, -30+i, 0.3, randomColor());
+
+  if (i < 5*2*Math.PI) {
+    setTimeout(() => {randomColorBall();}, 1000 * duration);
+  }
+
+  i += Math.PI / 6
+}
+
+randomColorBall();
+
+</script>
